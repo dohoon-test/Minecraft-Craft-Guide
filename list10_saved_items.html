@@ -4,7 +4,7 @@
 	<title>Minecraft Craft Guide</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="assets/css/main.css" />
+	<link rel="stylesheet" href="/Minecraft-Craft-Guide/assets/css/main.css" />
 </head>
 <body class="is-preload">
 
@@ -47,34 +47,34 @@
 		<div class="inner">
 
 			<!-- Menu -->
-				<nav id="menu">
-					<header class="major">
-						<h2>Menu</h2>
-					</header>
-					<ul>
-						<li><a href="index.html">Homepage</a></li>
-						<li><a href="list1_Introduction.html">Introduction</a></li>
-						<li>
-							<span class="opener">Crafting</span>
-							<ul>
-								<li><a href="list2_tool.html">Tool</a></li>
-								<li><a href="list3_crafting_table.html">Crafting Table</a></li>
-								<li><a href="list4_block.html">Block</a></li>
-								<li><a href="list5_redstone.html">Redstone</a></li>
-							</ul>
-						</li>
-						<li>
-							<span class="opener">Food</span>
-							<ul>
-								<li><a href="list6_meat.html">Meat</a></li>
-								<li><a href="list7_non_meat.html">Non-meat food</a></li>
-								<li><a href="list8_potion.html">Potion</a></li>
-							</ul>
-						</li>
-						<li><a href="list9_enchantments.html">Enchantment</a></li>
-						<li><a href="list10_saved_items.html">Saved Items</a></li>
-					</ul>
-				</nav>
+			<nav id="menu">
+				<header class="major">
+					<h2>Menu</h2>
+				</header>
+				<ul>
+					<li><a href="index.html">Homepage</a></li>
+					<li><a href="list1_Introduction.html">Introduction</a></li>
+					<li>
+						<span class="opener">Crafting</span>
+						<ul>
+							<li><a href="list2_tool.html">Tool</a></li>
+							<li><a href="list3_crafting_table.html">Crafting Table</a></li>
+							<li><a href="list4_block.html">Block</a></li>
+							<li><a href="list5_redstone.html">Redstone</a></li>
+						</ul>
+					</li>
+					<li>
+						<span class="opener">Food</span>
+						<ul>
+							<li><a href="list6_meat.html">Meat</a></li>
+							<li><a href="list7_non_meat.html">Non-meat food</a></li>
+							<li><a href="list8_potion.html">Potion</a></li>
+						</ul>
+					</li>
+					<li><a href="list9_enchantments.html">Enchantment</a></li>
+					<li><a href="list10_saved_items.html">Saved Items</a></li>
+				</ul>
+			</nav>
 
 			<!-- Section -->
 			<section>
@@ -98,11 +98,11 @@
 </div>
 
 <!-- Scripts -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/browser.min.js"></script>
-<script src="assets/js/breakpoints.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
+<script src="/Minecraft-Craft-Guide/assets/js/jquery.min.js"></script>
+<script src="/Minecraft-Craft-Guide/assets/js/browser.min.js"></script>
+<script src="/Minecraft-Craft-Guide/assets/js/breakpoints.min.js"></script>
+<script src="/Minecraft-Craft-Guide/assets/js/util.js"></script>
+<script src="/Minecraft-Craft-Guide/assets/js/main.js"></script>
 
 <!-- Saved Items Script -->
 <script>
@@ -112,16 +112,17 @@
 	function renderSavedItems() {
 		container.innerHTML = "";
 
-        if (saved.length === 0) {
-            container.innerHTML = "";
-        }
-
-        else {
+		if (saved.length === 0) {
+			container.innerHTML = "";
+		} else {
 			saved.forEach((item, index) => {
 				const article = document.createElement('article');
+				const fixedImagePath = item.image.startsWith('/Minecraft-Craft-Guide') 
+					? item.image 
+					: `/Minecraft-Craft-Guide${item.image.startsWith('/') ? '' : '/'}${item.image}`;
 				article.innerHTML = `
 					<span class="image object">
-						<img src="${item.image}" alt="${item.title}" />
+						<img src="${fixedImagePath}" alt="${item.title}" />
 					</span>
 					<h3>${item.title}</h3>
 					<ul class="actions stacked">
