@@ -112,14 +112,16 @@
 	function renderSavedItems() {
 		container.innerHTML = "";
 
-		if (saved.length === 0) {
-			container.innerHTML = "";
-		} else {
+        if (saved.length === 0) {
+            container.innerHTML = "";
+        }
+
+        else {
 			saved.forEach((item, index) => {
 				const article = document.createElement('article');
 				article.innerHTML = `
 					<span class="image object">
-						<img src="${fixedImagePath}" alt="${item.title}" />
+						<img src="${item.image}" alt="${item.title}" />
 					</span>
 					<h3>${item.title}</h3>
 					<ul class="actions stacked">
