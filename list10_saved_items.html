@@ -117,9 +117,6 @@
 		} else {
 			saved.forEach((item, index) => {
 				const article = document.createElement('article');
-				const fixedImagePath = item.image.startsWith('/Minecraft-Craft-Guide') 
-					? item.image 
-					: `/Minecraft-Craft-Guide${item.image.startsWith('/') ? '' : '/'}${item.image}`;
 				article.innerHTML = `
 					<span class="image object">
 						<img src="${fixedImagePath}" alt="${item.title}" />
