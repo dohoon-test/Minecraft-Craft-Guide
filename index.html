@@ -106,22 +106,23 @@
 			</div>
 
 		<!-- Scripts -->
-			<script src="/Minecraft-Craft-Guide/assets/js/jquery.min.js"></script>
-			<script src="/Minecraft-Craft-Guide/assets/js/browser.min.js"></script>
-			<script src="/Minecraft-Craft-Guide/assets/js/breakpoints.min.js"></script>
-			<script src="/Minecraft-Craft-Guide/assets/js/util.js"></script>
-			<script src="/Minecraft-Craft-Guide/assets/js/main.js"></script>
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
 			<script>
-			function saveItem(id, title, image) {
-				let saved = JSON.parse(localStorage.getItem('savedItems') || '[]');
-				if (!saved.some(item => item.id === id)) {
-				saved.push({ id, title, image });
-				localStorage.setItem('savedItems', JSON.stringify(saved));
-				alert('보관함에 저장되었습니다.');
-				} else {
-				alert('이미 보관함에 있습니다.');
+				function saveItem(link, title, image) {
+					const saved = JSON.parse(localStorage.getItem('savedItems') || '[]');
+					if (!saved.some(item => item.link === link)) {
+						saved.push({ link, title, image });
+						localStorage.setItem('savedItems', JSON.stringify(saved));
+						alert('저장되었습니다!');
+					} else {
+						alert('이미 저장되어 있습니다.');
+					}
 				}
-			}
 			</script>
 	</body>
+</html>
 </html>
