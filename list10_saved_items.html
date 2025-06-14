@@ -1,0 +1,154 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Minecraft Craft Guide</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body class="is-preload">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+	<!-- Main -->
+	<div id="main">
+		<div class="inner">
+
+			<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="logo"><strong>Home</strong></a>
+				<ul class="icons">
+					<li><a href="https://www.instagram.com/minecraft/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+					<li><a href="https://www.minecraft.net/ko-kr" class="icon brands fa-medium-m"><span class="label">Minecraft</span></a></li>
+				</ul>
+			</header>
+
+			<!-- Section -->
+			<section>
+				<header class="major">
+					<h2>Saved Items</h2>
+				</header>
+				<div class="posts" id="savedItemsContainer"></div>
+			</section>
+
+			<!-- Clear All Button -->
+			<section>
+				<ul class="actions" style="justify-content: center;">
+					<li><a href="#" class="button" onclick="clearSaved()">Clear All</a></li>
+				</ul>
+			</section>
+
+		</div>
+	</div>
+
+	<!-- Sidebar -->
+	<div id="sidebar">
+		<div class="inner">
+
+			<!-- Menu -->
+				<nav id="menu">
+					<header class="major">
+						<h2>Menu</h2>
+					</header>
+					<ul>
+						<li><a href="index.html">Homepage</a></li>
+						<li><a href="list1_Introduction.html">Introduction</a></li>
+						<li>
+							<span class="opener">Crafting</span>
+							<ul>
+								<li><a href="list2_tool.html">Tool</a></li>
+								<li><a href="list3_crafting_table.html">Crafting Table</a></li>
+								<li><a href="list4_block.html">Block</a></li>
+								<li><a href="list5_redstone.html">Redstone</a></li>
+							</ul>
+						</li>
+						<li>
+							<span class="opener">Food</span>
+							<ul>
+								<li><a href="list6_meat.html">Meat</a></li>
+								<li><a href="list7_non_meat.html">Non-meat food</a></li>
+								<li><a href="list8_potion.html">Potion</a></li>
+							</ul>
+						</li>
+						<li><a href="list9_enchantments.html">Enchantment</a></li>
+						<li><a href="list10_saved_items.html">Saved Items</a></li>
+					</ul>
+				</nav>
+
+			<!-- Section -->
+			<section>
+				<header class="major">
+					<h2>Update</h2>
+				</header>
+				<p>조합법 추가 혹은 더 많은 정보를 원하시는 경우, 아래 이메일로 연락 부탁드립니다.</p>
+				<ul class="contact">
+					<li class="icon solid fa-envelope"><a href="mailto:0921danieldaniel@gmail.com">0921danieldaniel@gmail.com</a></li>
+				</ul>
+			</section>
+
+			<!-- Footer -->
+			<footer id="footer">
+				<p class="copyright">&copy;  2025 Minecraft Craft Guide. All rights reserved. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+			</footer>
+
+		</div>
+	</div>
+
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+<!-- Saved Items Script -->
+<script>
+	const saved = JSON.parse(localStorage.getItem('savedItems') || '[]');
+	const container = document.getElementById('savedItemsContainer');
+
+	function renderSavedItems() {
+		container.innerHTML = "";
+
+        if (saved.length === 0) {
+            container.innerHTML = "";
+        }
+
+        else {
+			saved.forEach((item, index) => {
+				const article = document.createElement('article');
+				article.innerHTML = `
+					<span class="image object">
+						<img src="${item.image}" alt="${item.title}" />
+					</span>
+					<h3>${item.title}</h3>
+					<ul class="actions stacked">
+						<li><a href="${item.link}" class="button">More</a></li>
+						<li><button class="button" onclick="deleteItem(${index})">Delete</button></li>
+					</ul>
+				`;
+				container.appendChild(article);
+			});
+		}
+	}
+
+	function deleteItem(index) {
+		saved.splice(index, 1);
+		localStorage.setItem('savedItems', JSON.stringify(saved));
+		renderSavedItems();
+	}
+
+	function clearSaved() {
+		if (confirm("모든 저장 항목을 삭제하시겠습니까?")) {
+			localStorage.removeItem('savedItems');
+			location.reload();
+		}
+	}
+
+	renderSavedItems();
+</script>
+
+</body>
+</html>
